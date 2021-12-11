@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>网易云Demo</title>
+        <link rel="stylesheet" href="../css/demo.css">
+        <script type="text/javascript" src="../js/demo.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="playerWindow">
+            <div id="searchBar">
+                <div id="wrapper">
+                    <input id="searchText" type="text" onkeydown="if(event.keyCode == 13){getKeyWord();}">
+                    <img src="../images/zoom.png" alt="无法显示图片" id="zoom" onclick="getKeyWord();">
+                </div>
+            </div>
+            <div id="record">
+                <img src="../images/cover.jpg" alt="" id="recordCover">
+                <img src="../images/disc.png" alt="" id="recordDisc">
+                <img src="../images/player_bar.png" alt="" id="recordBar">
+            </div>
+            <div id="songList">
+                <ul>
+                    <li class="subList" onclick="playSong(0)"></li>
+                    <li class="subList" onclick="playSong(1)"></li>
+                    <li class="subList" onclick="playSong(2)"></li>
+                    <li class="subList" onclick="playSong(3)"></li>
+                    <li class="subList" onclick="playSong(4)"></li>
+                    <li class="subList" onclick="playSong(5)"></li>
+                </ul>
+            </div>
+            <div id="comment">
+                <ul>
+                    <li class="subCommentList"></li>
+                    <li class="subCommentList"></li>
+                    <li class="subCommentList"></li>
+                    <li class="subCommentList"></li>
+                    <li class="subCommentList"></li>
+                    <li class="subCommentList"></li>
+                </ul>
+            </div>
+            <div id="audioBar">
+                <audio id="audioControler" src="" controls onplay="recordRotate();" onpause="recordReverse()"></audio>
+            </div>
+        </div>
+        <script type="text/javascript">
+            
+            axios.defaults.baseURL = 'http://test.codeedu.com.cn/wangyiyun';
+        </script>
+    </body>
+</html>

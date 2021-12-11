@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>网易云音乐</title>
+        <link rel="stylesheet" href="./css/NCM.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/javascript" src="./js/NCM.js"></script>
+    </head>
+    <body>
+        <div id="nav">
+            <div id="nav_center">
+                <div id="navOption">
+                    <img src="./images/logo.png" alt="无法显示图片">
+                </div>
+                <div id="tabs1" onclick="tabChange(1)"><p class="nav_p">发现音乐</p></div>
+                <div id="tabs2" onclick="tabChange(2)"><p class="nav_p">还没想好</p></div>
+            </div>
+        </div>
+        <div id="banner">
+            <img id="bannerImg" src="./images/banner_1.jpg" alt="无法显示图片">
+        </div>
+        <div id="main">
+            <div id="tab1">
+                <div id="playerWindow">
+                    <div id="searchBar">
+                        <div id="wrapper">
+                            <input id="searchText" type="text" onkeydown="if(event.keyCode == 13){getKeyWord();}">
+                            <img src="./images/zoom.png" alt="无法显示图片" id="zoom" onclick="getKeyWord();">
+                        </div>
+                    </div>
+                    <div id="record">
+                        <img src="./images/cover.jpg" alt="" id="recordCover">
+                        <img src="./images/disc.png" alt="" id="recordDisc">
+                        <img src="./images/player_bar.png" alt="" id="recordBar">
+                    </div>
+                    <div id="songlyrics">
+                        <ul>
+                            <li class="sublyrics"></li>
+                            <li class="sublyrics"></li>
+                            <li class="sublyrics"></li>
+                        </ul>
+                    </div>
+                    <div id="songList">
+                        <ul>
+                            <li class="subList" onclick="playSong(0)"></li>
+                            <li class="subList" onclick="playSong(1)"></li>
+                            <li class="subList" onclick="playSong(2)"></li>
+                            <li class="subList" onclick="playSong(3)"></li>
+                            <li class="subList" onclick="playSong(4)"></li>
+                            <li class="subList" onclick="playSong(5)"></li>
+                        </ul>
+                    </div>
+                    <div id="audioBar">
+                        <audio id="audioControler" src="" controls onplay="recordRotate();" onpause="recordReverse()"></audio>
+                    </div>
+                    <div id="comment">
+                        <ul>
+                            <li class="subCommentList"></li>
+                            <li class="subCommentList"></li>
+                            <li class="subCommentList"></li>
+                            <li class="subCommentList"></li>
+                            <li class="subCommentList"></li>
+                            <li class="subCommentList"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="tab2">
+                <p>还没想好</p>
+            </div>
+        </div>
+        <div id="footer">
+            <p>网易云音乐</p>
+        </div>
+        <script type="text/javascript">
+            var imgs_url = ['./images/banner_1.jpg','./images/banner_2.jpg','./images/banner_3.jpg'];
+            var len = imgs_url.length;
+            var index = 0;
+            var songObjects = {};
+            var songCommentObjects = {};
+            var coverObject;
+
+            function bannerChange(){
+                index++;
+                if(index == len){
+                    index = 0;
+                }
+                document.getElementById('bannerImg').src = imgs_url[index];
+                setTimeout("bannerChange()", 4000);
+            }
+            window.setTimeout("bannerChange()", 0);
+
+            axios.defaults.baseURL = 'http://test.codeedu.com.cn/wangyiyun';
+        </script>
+    </body>
+</html>

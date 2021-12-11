@@ -1,0 +1,192 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #eee;
+}
+/*nav*/
+#nav{
+    height: 80px;
+    line-height: 80px;
+    width: 100%;
+    background-color: #242424;
+}
+#nav_center{
+    height: 80px;
+    line-height: 80px;
+    width: 1080px;
+    text-align: center;
+    margin: 0 auto;
+}
+#navOption{
+    float: left;
+}
+#search{
+    width: 0 auto;
+    height: 80px;
+    line-height: 80px;
+    float: right;
+}
+#zoom{
+    cursor: pointer;
+    float: right;
+    margin-top: 33px;
+}
+#tabs1{
+    float: left;
+    margin: 0 230px;
+    cursor: pointer;
+}
+#tabs2{
+    float: left;
+    margin: 0;
+    cursor: pointer;
+}
+.nav_p{
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+/*banner*/
+#banner{
+    clear: both;
+    height: 420px;
+    line-height: 420px;
+    width: 1080px;
+    margin: 0 auto;
+}
+/*main*/
+#main{
+    height: 1000px;
+    width: 1080px;
+    text-align: center;
+    margin: 30px auto;
+}
+#tab1{
+    width: 1080px;
+    display: block;
+}
+#tab2{
+    width: 1080px;
+    display: none;
+}
+#playerWindow{
+    height: 1000px;
+    width: 1080px;
+    text-align: center;
+    margin: 30px auto;
+}
+#searchBar{
+    height: 20px;
+    text-align: center;
+}
+#wrapper{
+    width: 174px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    margin-left: -62px;
+}
+#searchText{
+    display: block;
+    width: 150px;
+    height: 16px;
+    size: 10px;
+    float: left;
+}
+#zoom{
+    cursor: pointer;
+    display: block;
+    margin-top: 1px;
+}
+#songlyrics{
+    float: left;
+    width: 526px;
+}
+.sublyrics{
+    list-style-type: none;
+}
+#songList{
+    float: right;
+    width: 300px;
+    height: 500px;
+    text-align: center;
+}
+.subList{
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    width: 300px;
+    list-style-type: none;
+    cursor: pointer;
+    overflow: auto;
+}
+#comment{
+    float: left;
+    width: 1080px;
+    height: 500px;
+}
+.subCommentList{
+    display: block;
+    /*height: 60px;
+    line-height: 60px;*/
+    width: 1080px;
+    list-style-type: none;
+    overflow: auto;
+}
+#audioControler{
+    width: 1080px;
+}
+#record{
+    width: 254px;
+    height: 500px;
+    float: left;
+    position: relative;
+}
+#recordBar{
+    position: absolute;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: 50px;
+    transform: rotate(-30deg);
+    transform-origin: 12px 12px;
+    transition: 2s;
+}
+#recordCover{
+    position: absolute;
+    border-radius: 75px;
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    margin-top: -75px;
+    margin-left: -75px;
+    animation: rotate 10s linear infinite;
+    animation-play-state: paused;
+}
+#recordDisc{
+    position: absolute;
+    margin-left: -127px;
+    top: 50%;
+    margin-top: -127.5px;
+    animation: rotate 10s linear infinite;
+    animation-play-state: paused;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/*footer*/
+#footer{
+    height: 80px;
+    line-height: 80px;
+    width: 100%;
+    background-color: #242424;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}

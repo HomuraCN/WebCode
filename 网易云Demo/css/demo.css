@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #eee;
+}
+#playerWindow{
+    height: 1000px;
+    width: 1080px;
+    text-align: center;
+    margin: 200px auto;
+}
+#searchBar{
+    height: 20px;
+    text-align: center;
+}
+#wrapper{
+    width: 174px;
+    height: 20px;
+    position: absolute;
+    left: 50%;
+    margin-left: -62px;
+}
+#searchText{
+    display: block;
+    width: 150px;
+    height: 16px;
+    size: 10px;
+    float: left;
+}
+#zoom{
+    cursor: pointer;
+    display: block;
+    float: left;
+}
+#songList{
+    float: left;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+}
+.subList{
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    width: 500px;
+    list-style-type: none;
+    cursor: pointer;
+    overflow: auto;
+}
+#comment{
+    float: right;
+    width: 326px;
+    height: 500px;
+}
+.subCommentList{
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    width: 326px;
+    list-style-type: none;
+    overflow: auto;
+}
+#audioControler{
+    width: 1080px;
+}
+#record{
+    width: 254px;
+    height: 500px;
+    float: left;
+    position: relative;
+}
+#recordBar{
+    position: absolute;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: 50px;
+    transform: rotate(-30deg);
+    transform-origin: 12px 12px;
+    transition: 2s;
+}
+#recordCover{
+    position: absolute;
+    border-radius: 75px;
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    margin-top: -75px;
+    margin-left: -75px;
+    animation: rotate 10s linear infinite;
+    animation-play-state: paused;
+}
+#recordDisc{
+    position: absolute;
+    margin-left: -127px;
+    top: 50%;
+    margin-top: -127.5px;
+    animation: rotate 10s linear infinite;
+    animation-play-state: paused;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
