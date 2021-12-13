@@ -4,6 +4,11 @@ var songUrlArray = [];
 var songCoverArray = [];
 var hotCommentsArray = [];
 var songLyrics = [];
+var lyrics = [];
+var timer = [];
+var timeCounter = [];
+var songIndex = 0;
+var listIndex = 0;
 function tabChange(index){
     if(index == 1){
         document.getElementById('tab1').style.display = "block";
@@ -25,6 +30,8 @@ function recordReverse(){
     document.getElementById('recordDisc').style.animationPlayState = "paused";
 }
 function playSong(index){
+    songIndex = index;
+    listIndex = 0;
     document.getElementById("audioControler").src = songUrlArray[index].url;
     showSongComment(index);
     changeSongCover(index);
@@ -41,7 +48,15 @@ function showSongComment(index){
     }
 }
 function showLyrics(index){
-    document.getElementsByClassName("sublyrics")[0].innerHTML = songLyrics[index];
+    handleLyrics(index);
+    var sublyricsNode = document.getElementsByClassName("sublyrics")[0];
+    document.getElementById("songlyricsUl").innerHTML = "";
+    for(var i = 0; i < lyrics[index].length; i++){
+        var tempNode = sublyricsNode.cloneNode(true);
+        tempNode.getElementsByClassName("sublyricsText")[0].textContent = lyrics[index][i];
+        document.getElementById("songlyricsUl").appendChild(tempNode);
+    }
+    //document.getElementsByClassName("sublyrics")[0].innerHTML = songLyrics[index];
 }
 function changeSongCover(index){
     document.getElementById("recordCover").src = songCoverArray[index].al.picUrl;
@@ -102,10 +117,12 @@ function getLyrics(index){
         "/lyric?id=" + songArray[index].id
     ).then(
         response => {
+            songLyrics[index] = '#';
             songLyrics[index] = response.data.lrc.lyric;
         }
     )
 }
+/*
 function myFunction(){
 	var lyrics = [];
 	var timer = [];
@@ -117,5 +134,50 @@ function myFunction(){
 		timer.push(temp2[0].substring(1));
 		lyrics.push(temp1[1]);
 	}
+    var temp = timer[0].split(":");
+	var tempMinute = parseInt(temp[0],10);
+	var tempSecond = parseFloat(temp[1]);
+	document.getElementById("demo").innerHTML=tempMinute;
+	document.getElementById("demo").innerHTML=tempSecond;
 	document.getElementById("demo").innerHTML=timer[0];
+}
+*/
+function handleLyrics(index){
+    timer[index] = new Array();
+    lyrics[index] = new Array();
+    timeCounter[index] = new Array();
+    var temp = '#';
+    var temp0 = '';
+    temp = songLyrics[index];
+    temp0 = temp.split("\n");
+    for(var j = 0; j < temp0.length; j++){
+        var temp1 = temp0[j].split("]");
+        var temp2 = temp1;
+        timer[index].push(temp2[0].substring(1));
+        lyrics[index].push(temp1[1]);
+    }
+    for(var i = 0; i < timer[index].length; i++){
+        var t = timer[index][i].split(":");
+        var tempMinute = parseInt(t[0],10);
+        var tempSecond = parseFloat(t[1]);
+        timeCounter[index][i] = tempMinute * 60 + tempSecond;
+    }
+}
+function highLight(){
+    var audioObj = document.getElementById('audioControler');
+    console.log(audioObj.currentTime + "#" + listIndex);
+    if(audioObj.currentTime >= timeCounter[songIndex][listIndex] && audioObj.currentTime < timeCounter[songIndex][listIndex + 1]){
+        for(var i = 0; i < timeCounter[songIndex].length; i++){
+            document.getElementsByClassName("sublyricsText")[i].style.color = 'black';
+        }
+        document.getElementsByClassName("sublyricsText")[listIndex].style.color = 'red';
+        /*document.getElementsByClassName("sublyricsText").style.color = 'black';
+        document.getElementsByClassName("sublyricsText")[listIndex].style.color = 'red';*/
+    }
+    else if(audioObj.currentTime >= timeCounter[songIndex][listIndex]){
+        listIndex++;
+    }
+    else {
+        listIndex--;
+    }
 }

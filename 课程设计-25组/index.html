@@ -35,10 +35,10 @@
                         <img src="./images/player_bar.png" alt="" id="recordBar">
                     </div>
                     <div id="songlyrics">
-                        <ul>
-                            <li class="sublyrics"></li>
-                            <li class="sublyrics"></li>
-                            <li class="sublyrics"></li>
+                        <ul id="songlyricsUl">
+                            <li class="sublyrics">
+                                <p class="sublyricsText"></p>
+                            </li>
                         </ul>
                     </div>
                     <div id="songList">
@@ -52,7 +52,7 @@
                         </ul>
                     </div>
                     <div id="audioBar">
-                        <audio id="audioControler" src="" controls onplay="recordRotate();" onpause="recordReverse()"></audio>
+                        <audio id="audioControler" src="" controls onplay="recordRotate();" onpause="recordReverse()" ontimeupdate="highLight()"></audio>
                     </div>
                     <div id="comment">
                         <ul>

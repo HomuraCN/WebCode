@@ -122,6 +122,14 @@ body{
     cursor: pointer;
     overflow: auto;
 }
+.sublyrics{
+    height: 20px;
+    line-height: 20px;
+}
+#songlyricsUl{
+    height: 500px;
+    overflow: auto;
+}
 #comment{
     float: left;
     width: 1080px;
